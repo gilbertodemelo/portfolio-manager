@@ -9,6 +9,14 @@ class Transaction:
         self.__amount = float(amount)
         self.__quantity = float(quantity)
 
+    @property
+    def amount(self):
+        return self.__amount
+
+    @property.setter
+    def amount(self, amt):
+        self.__amount = amt
+
     def __str__(self):
         return f'Date: {self.__date}' \
                f'Description: {self.__description}' \
