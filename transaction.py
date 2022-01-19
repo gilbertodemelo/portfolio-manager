@@ -2,29 +2,21 @@
 
 
 class Transaction:
-    def __init__(self, date, price, description, amount, quantity):
+    def __init__(self, date, price, description, quantity, amount):
         self.__date = date
-        self.__price = float(price)
+        self.__price = price
         self.__description = description
-        self.__amount = float(amount)
-        self.__quantity = float(quantity)
-
-    @property
-    def amount(self):
-        return self.__amount
-
-    @property.setter
-    def amount(self, amt):
-        self.__amount = amt
+        self.__amount = amount
+        self.__quantity = quantity
 
     def __str__(self):
-        return f'Date: {self.__date}' \
-               f'Description: {self.__description}' \
-               f'Price: ${self.__price}' \
-               f'Quantity: {self.__quantity}' \
-               f'Amount: $ {self.__amount}'
+        return f'Date: {self.__date} ' \
+               f'Description: {self.__description} ' \
+               f'Price: ${self.__price} ' \
+               f'Quantity: {self.__quantity} ' \
+               f'Amount: $ {self.__amount} '
 
-    def get_transaction_dictionary(self, date, price, description, amount, quantity):
-        transaction_info = {'date': date, 'price': price, 'description': description, 'amount': amount, 'quantity': quantity}
+    def get_transaction_dictionary(self, date, price, description, quantity, amount):
+        transaction_info = {'date': date, 'price': price, 'description': description, 'quantity': quantity, 'amount': amount}
         return transaction_info
 

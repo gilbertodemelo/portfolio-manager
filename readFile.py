@@ -63,14 +63,14 @@ def get_number_of_shares(transactions_list: list):
     return count
 
 
-def main():
-
-    transactions_data = read_file('data/transactions.csv')
-    transactions_symbols = get_list_of_symbols(transactions_data)
-    result = get_transactions_structure(transactions_symbols, transactions_data)
-    transactions_for_symbol = get_transactions_for_symbol(result, "AOA")
-    pprint.pprint(transactions_for_symbol)
-
-
-# Call main function
-main()
+# def main():
+#
+#     transactions_data = read_file('data/transactions.csv')
+#     transactions_symbols = get_list_of_symbols(transactions_data)
+#     result = get_transactions_structure(transactions_symbols, transactions_data)
+#     transactions_for_symbol = get_transactions_for_symbol(result, "AOA")
+#     pprint.pprint(transactions_for_symbol)
+#
+#
+# # Call main function
+# main()
