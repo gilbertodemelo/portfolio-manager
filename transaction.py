@@ -24,3 +24,7 @@ class Transaction:
                f'Quantity: {self.__quantity}' \
                f'Amount: $ {self.__amount}'
 
+    def get_transaction_dictionary(self, date, price, description, amount, quantity):
+        transaction_info = {'date': date, 'price': price, 'description': description, 'amount': amount, 'quantity': quantity}
+        return transaction_info
+
