@@ -8,3 +8,11 @@ class Transaction:
         self.__description = description
         self.__amount = float(amount)
         self.__quantity = float(quantity)
+
+    def __str__(self):
+        return f'Date: {self.__date}' \
+               f'Description: {self.__description}' \
+               f'Price: ${self.__price}' \
+               f'Quantity: {self.__quantity}' \
+               f'Amount: $ {self.__amount}'
+

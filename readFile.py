@@ -54,22 +54,22 @@ def get_number_of_shares(transactions_list: list):
     for item in transactions_list:
         for transaction in item:
             quantity = transaction["quantity"]
-            if len(quantity):
-                if float(quantity) > 0:
+            amount = transaction["amount"]
+            if (quantity != '') & (amount != ''):
+                if (float(quantity) > 0) & (float(amount) < 0):
                     count += float(quantity)
-                else:
+                elif (float(quantity) > 0) & (float(amount) > 0):
                     count -= float(quantity)
-    print(count)
+    return count
+
 
 def main():
 
-    transactions_data = read_file('transactions.csv')
+    transactions_data = read_file('data/transactions.csv')
     transactions_symbols = get_list_of_symbols(transactions_data)
     result = get_transactions_structure(transactions_symbols, transactions_data)
-    transactions_for_symbol = get_transactions_for_symbol(result, "BNNLF")
-    get_number_of_shares(transactions_for_symbol)
-
-
+    transactions_for_symbol = get_transactions_for_symbol(result, "AOA")
+    pprint.pprint(transactions_for_symbol)
 
 
 # Call main function
