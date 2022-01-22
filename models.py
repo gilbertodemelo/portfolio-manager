@@ -1,6 +1,9 @@
+from helpers import string_to_datetime
+
+
 class Transaction:
     def __init__(self, **info):
-        self.__date = info['DATE']
+        self.__date = string_to_datetime(info['DATE'])
         self.__price = float(info['PRICE']) if info['PRICE'] != '' else float('nan')
         self.__description = info['DESCRIPTION']
         self.__amount = float(info['AMOUNT']) if info['AMOUNT'] != '' else float('nan')
