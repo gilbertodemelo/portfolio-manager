@@ -1,6 +1,7 @@
 import csv
-import pprint
 
+
+# TODO: Convert dates to datetime objects
 
 # the readFile function reads a .csv file and
 # returns a list of transactions for the

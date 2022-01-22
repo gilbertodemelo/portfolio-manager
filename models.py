@@ -5,9 +5,11 @@ class Transaction:
         self.__description = info['DESCRIPTION']
         self.__amount = float(info['AMOUNT']) if info['AMOUNT'] != '' else float('nan')
         self.__quantity = float(info['QUANTITY']) if info['QUANTITY'] != '' else float('nan')
+        self.__symbol = info['SYMBOL'] if info['SYMBOL'] != '' else None
 
     def __str__(self):
         return f'Date: {self.__date} ' \
+               f'Symbol: {self.__symbol}' \
                f'Description: {self.__description} ' \
                f'Price: ${self.__price} ' \
                f'Quantity: {self.__quantity} ' \
@@ -15,7 +17,7 @@ class Transaction:
 
     def __repr__(self):
         """Return a `repr(self`, a computer-readable string representation of this object. """
-        return f"Transaction(date={self.__date!r}, description={self.__description!r}, price={self.__price!r}, " \
+        return f"Transaction(date={self.__date!r}, symbol={self.__symbol!r} description={self.__description!r}, price={self.__price!r}, " \
                f"quantity={self.__quantity!r}, amount={self.__amount!r})"
 
 
@@ -26,7 +28,7 @@ class Stock:
 
     @property
     def quantity(self):
-        total_count  = 0
+        total_count = 0
         for transaction in self.__transactions:
             quantity = transaction.__quantity
             description = transaction.__description
