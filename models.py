@@ -10,6 +10,10 @@ class Transaction:
         self.__quantity = float(info['QUANTITY']) if info['QUANTITY'] != '' else float('nan')
         self.__symbol = info['SYMBOL'] if info['SYMBOL'] != '' else None
 
+    @property
+    def symbol(self):
+        return self.__symbol
+
     def __str__(self):
         return f'Date: {self.__date} ' \
                f'Symbol: {self.__symbol}' \
@@ -28,6 +32,7 @@ class Stock:
     def __init__(self, symbol):
         self.__symbol = symbol if len(symbol) > 0 else None
         self.__transactions = [] # a list of dictionaries of transactions
+
 
     @property
     def quantity(self):
