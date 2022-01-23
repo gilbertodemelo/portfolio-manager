@@ -16,7 +16,7 @@ class Transaction:
 
     def __str__(self):
         return f'Date: {self.__date} ' \
-               f'Symbol: {self.__symbol}' \
+               f'Symbol: {self.__symbol} ' \
                f'Description: {self.__description} ' \
                f'Price: ${self.__price} ' \
                f'Quantity: {self.__quantity} ' \
@@ -30,14 +30,13 @@ class Transaction:
 
 class Stock:
     def __init__(self, symbol):
-        self.__symbol = symbol if len(symbol) > 0 else None
-        self.__transactions = [] # a list of dictionaries of transactions
-
+        self.__symbol = symbol if symbol != '' else None
+        self.transactions = [] # a list of dictionaries of transactions
 
     @property
     def quantity(self):
         total_count = 0
-        for transaction in self.__transactions:
+        for transaction in self.transactions:
             quantity = transaction.__quantity
             description = transaction.__description
             amount = transaction.__amount
