@@ -1,4 +1,5 @@
 """A database encapsulating collections of Stocks and their transactions """
+import math
 
 
 class StockDatabase:
@@ -20,7 +21,7 @@ class StockDatabase:
                     transactions_list.append(transaction)
             stock.transactions = transactions_list
 
-    def get_stock_by_symbol(self, symbol: str):
+    def get_transactions_by_symbol(self, symbol: str) -> dict:
         """Find a stock and its transactions by its symbol. """
         result = dict()
         for stock in self.__stocks:
@@ -29,6 +30,19 @@ class StockDatabase:
                 stock.transactions.sort(key=lambda d: d.date)
                 result[symbol] = stock.transactions
         return result
+
+    def get_current_quantity(self, symbol: str):
+        count: int = 0
+        stock_dict = self.get_transactions_by_symbol(symbol)
+        for transaction in stock_dict[symbol]:
+            if ('Bought' in transaction.description) and not (math.isnan(transaction.quantity)):
+                if transaction.quantity >= 1:
+                    count += transaction.quantity
+            elif ('Sold' in transaction.description) and not (math.isnan(transaction.quantity)):
+                if transaction.quantity >= 1:
+                    count -= transaction.quantity
+        return count
+
 
 
     @property

@@ -18,6 +18,14 @@ class Transaction:
     def date(self):
         return self.__date
 
+    @property
+    def description(self):
+        return self.__description
+
+    @property
+    def quantity(self):
+        return self.__quantity
+
     def __str__(self):
         return f'Date: {self.__date} ' \
                f'Symbol: {self.__symbol} ' \
@@ -28,7 +36,7 @@ class Transaction:
 
     def __repr__(self):
         """Return a `repr(self`, a computer-readable string representation of this object. """
-        return f"Transaction(date={self.__date!r}, symbol={self.__symbol!r} description={self.__description!r}, price={self.__price!r}, " \
+        return f"Transaction(date={self.__date!r}, symbol={self.__symbol!r}, description={self.__description!r}, price={self.__price!r}, " \
                f"quantity={self.__quantity!r}, amount={self.__amount!r})"
 
 
@@ -41,7 +49,7 @@ class Stock:
     def quantity(self):
         total_count = 0
         for transaction in self.transactions:
-            quantity = transaction.quantity
+            quantity = transaction.__quantity
             description = transaction.__description
             amount = transaction.__amount
             if ("Bought" in description) and (amount < 0):

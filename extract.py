@@ -32,17 +32,3 @@ def load_stocks(csv_path):
             obj = Stock(item)
             stock_objs.add(obj)
     return stock_objs
-
-
-
-
-
-
-
-
-
-
-
-
-
-
