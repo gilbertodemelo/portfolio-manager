@@ -20,12 +20,17 @@ class StockDatabase:
                     transactions_list.append(transaction)
             stock.transactions = transactions_list
 
-    def get_stock_by_symbol(self, symbol):
+    def get_stock_by_symbol(self, symbol: str):
         """Find a stock and its transactions by its symbol. """
+        result = dict()
         for stock in self.__stocks:
-            # sorted_transactions = sorted(stock.transactions, key=lambda d: d.date)
+            #sorted_transactions = sorted(stock.transactions, key=lambda d: d.date)
             if stock.symbol == symbol:
                 stock.transactions.sort(key=lambda d: d.date)
-                return stock
-            else:
-                return None
+                result[symbol] = stock.transactions
+        return result
+
+
+    @property
+    def stocks(self):
+        return self.__stocks

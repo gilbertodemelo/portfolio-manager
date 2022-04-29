@@ -14,6 +14,10 @@ class Transaction:
     def symbol(self):
         return self.__symbol
 
+    @property
+    def date(self):
+        return self.__date
+
     def __str__(self):
         return f'Date: {self.__date} ' \
                f'Symbol: {self.__symbol} ' \
@@ -37,7 +41,7 @@ class Stock:
     def quantity(self):
         total_count = 0
         for transaction in self.transactions:
-            quantity = transaction.__quantity
+            quantity = transaction.quantity
             description = transaction.__description
             amount = transaction.__amount
             if ("Bought" in description) and (amount < 0):
@@ -45,3 +49,7 @@ class Stock:
             elif ("Sold" in description) and (amount > 0):
                 total_count -= quantity
         return total_count
+
+    @property
+    def symbol(self):
+        return self.__symbol
